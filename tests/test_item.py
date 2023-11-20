@@ -21,3 +21,15 @@ def test_item_calculate_total_price(item_default):
 def test_item_apply_discount(item_default):
     item_default.apply_discount()
     assert item_default.price == 10000.0
+
+
+def test_string_to_number():
+    assert Item.string_to_number("5") == 5
+    assert Item.string_to_number("5.0") == 5
+    assert Item.string_to_number("5.5") == 5
+
+
+def test_name_setter(item_default):
+    item = item_default
+    item.name = "СуперСмартфон"
+    assert item.name == "СуперСмарт"
