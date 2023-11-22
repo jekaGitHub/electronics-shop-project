@@ -33,3 +33,9 @@ def test_name_setter(item_default):
     item = item_default
     item.name = "СуперСмартфон"
     assert item.name == "СуперСмарт"
+
+
+def test_instantiate_from_csv():
+    Item.instantiate_from_csv('../src/items.csv')
+    assert len(Item.all) == 5
+    assert Item.all[0].name == "Смартфон"
