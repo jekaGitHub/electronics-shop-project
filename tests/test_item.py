@@ -42,7 +42,14 @@ def test_instantiate_from_csv():
     assert Item.all[0].name == "Смартфон"
 
 
-def test_repr_and_str_Item():
+def test_repr_and_str_item():
     item1 = Item("Смартфон", 10000, 20)
     assert repr(item1) == "Item('Смартфон', 10000, 20)"
     assert str(item1) == 'Смартфон'
+
+
+def test_add_item_and_phone(item_default, phone_default):
+    item1 = item_default
+    phone1 = phone_default
+    assert item1 + phone1 == 25
+    assert phone1 + phone1 == 10
