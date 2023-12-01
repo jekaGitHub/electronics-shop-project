@@ -13,6 +13,8 @@ class Phone(Item):
         return f'{self.name}'
 
     def __add__(self, other):
+        if not isinstance(self, self.__class__) or not isinstance(other, other.__class__):
+            raise TypeError("Экземпляры не принадлежат классам Item и Phone")
         return self.quantity + other.quantity
 
     @property
