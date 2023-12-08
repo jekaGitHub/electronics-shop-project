@@ -37,14 +37,12 @@ class Item:
     def name(self):
         return self.__name
 
-
     @name.setter
     def name(self, value):
         if value.isalpha() and len(value) <= 10:
             self.__name = value
         else:
             self.__name = value[:10].strip()
-
 
     @classmethod
     def instantiate_from_csv(cls, filename) -> None:
@@ -57,11 +55,9 @@ class Item:
                 quantity = int(row['quantity'])
                 cls(name, price, quantity)
 
-
     @staticmethod
     def string_to_number(str_num):
         return int(float(str_num))
-
 
     def calculate_total_price(self) -> float:
         """
