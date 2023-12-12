@@ -58,10 +58,10 @@ def test_add_item_and_phone(item_default, phone_default):
 # Тест для ошибки FileNotFoundError
 def test_instantiate_from_csv_not_found_file_error():
     with pytest.raises(FileNotFoundError, match='Файл не найден!'):
-        Item.instantiate_from_csv("item.csv")
+        Item.instantiate_from_csv()
 
 
 # Тест для ошибки InstantiateCSVError
 def test_instantiate_from_csv_error():
     with pytest.raises(InstantiateCSVError, match='Файл повреждён!'):
-        Item.instantiate_from_csv("items.csv")
+        Item.instantiate_from_csv()

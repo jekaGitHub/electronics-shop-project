@@ -1,4 +1,5 @@
 import csv
+import os
 
 
 class Item:
@@ -45,10 +46,11 @@ class Item:
             self.__name = value[:10].strip()
 
     @classmethod
-    def instantiate_from_csv(cls, filename) -> None:
-        cls.all.clear()
+    def instantiate_from_csv(cls) -> None:
         try:
-            with open(filename, encoding='utf-8', newline='') as csvfile:
+            cls.all.clear()
+            path_file = os.path.join(os.path.dirname(__file__), 'items.csv')
+            with open(path_file, encoding='utf-8', newline='') as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
                     if ('name', 'price', 'quantity') not in row:
