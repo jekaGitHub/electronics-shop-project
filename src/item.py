@@ -53,14 +53,16 @@ class Item:
             with open(path_file, encoding='utf-8', newline='') as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
-                    if ('name', 'price', 'quantity') not in row:
-                        raise InstantiateCSVError('Файл item.csv поврежден')
+                    # if ('name', 'price', 'quantity') not in row:
+                    #     raise InstantiateCSVError('Файл item.csv поврежден')
                     name = row['name']
                     price = float(row['price'])
                     quantity = int(row['quantity'])
                     cls(name, price, quantity)
         except FileNotFoundError:
             raise FileNotFoundError('Отсутствует файл item.csv')
+        except (ValueError, KeyError):
+            raise InstantiateCSVError('Файл item.csv поврежден')
 
     @staticmethod
     def string_to_number(str_num):
